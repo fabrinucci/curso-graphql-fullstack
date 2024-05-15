@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@apollo/server": "^4.10.4",
+    "@graphql-tools/load-files": "^7.0.0",
     "graphql": "^16.8.1",
+    "graphql-scalars": "^1.23.0",
     "nodemon": "^3.1.0",
     "ts-node": "^10.9.2"
   }

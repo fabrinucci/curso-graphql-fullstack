@@ -1,20 +1,12 @@
 import { ApolloServer } from '@apollo/server'
 import { startStandaloneServer } from '@apollo/server/standalone'
+import { loadFilesSync } from '@graphql-tools/load-files'
+import { typeDefs as scalarTypeDefs } from 'graphql-scalars'
 
-const typeDefs = `#graphql
-  type Query {
-    getProducts: [String]
-  }
-`
-
-const resolvers = {
-  Query: {
-    getProducts: () => ['Product 1', 'Product 2'],
-  },
-}
+import resolvers from './resolvers.graphql'
 
 const server = new ApolloServer({
-  typeDefs,
+  typeDefs: [...scalarTypeDefs, loadFilesSync('./src/**/*.graphql')],
   resolvers,
 })
 
